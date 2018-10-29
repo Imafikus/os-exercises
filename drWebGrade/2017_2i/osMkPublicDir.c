@@ -31,7 +31,7 @@ void osMkPublicDir(const char *dname)
 {
     
     //umask se postavlja na negaciju ovoga u zagradi, a povratna vrednost je stari umask
-    //povratna vrendost umask() je tipa mode_t
+    //povratna vrendost umask() je tipa mode_tq
     mode_t oldUmask = umask(0);
     static mode_t perm = 0777;
     osAssert((mkdir(dname, perm) >= 0), "mkdir Failed");
