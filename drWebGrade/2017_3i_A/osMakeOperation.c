@@ -73,7 +73,7 @@ bool readFile(const char* fpath)
 
 bool writeFile(const char* fpath)
 {
-    int fd = open(fpath, O_WRONLY);
+    int fd = open(fpath, O_WRONLY | O_CREAT | O_TRUNC);
     osAssert(fd != -1, "open failed");
 
     static const uint32_t memBuffSize = 1U << 13;
@@ -98,7 +98,7 @@ bool writeFile(const char* fpath)
 }
 bool appendFile(const char* fpath)
 {
-    int fd = open(fpath, O_APPEND | O_WRONLY);
+    int fd = open(fpath, O_WRONLY | O_CREAT |O_APPEND);
     osAssert(-1 != fd, "open failed");
 
     static const uint32_t memBuffSize = 1U << 13;
